@@ -249,8 +249,8 @@ textarea:focus {
 
 .wd_slider_textinfo {
     float: left;
-    width: 50%;
-    padding: 200px 0px 200px 200px;
+    width: 40%;
+    padding: 60px 0px 200px 200px;
     text-align: center;
 }
 
@@ -266,7 +266,7 @@ textarea:focus {
     float: left;
     width: 100%;
     font-size: 30px;
-    color: #de1c1c;
+    color: #ffffff;
     text-transform: capitalize;
     font-family: 'Lora', serif;
     margin: 35px 0px 0px 0px;
@@ -359,8 +359,8 @@ textarea:focus {
 
 .wd_logo {
     float: left;
-    width: 100%;
-    padding-top: 49px;
+    width: 80%;
+    padding-top: 9px;
 }
 
 .wd_logo img {
@@ -2117,7 +2117,10 @@ textarea:focus {
 @media (min-width: 992px) and (max-width: 1199px) {
 
     .wd_logo {
-        padding-top: 39px;
+        padding-top: 30px;
+    }
+    .wd_logo img {
+        width: 60%;
     }
 
     .wd_main_menu ul li a {
@@ -2184,6 +2187,12 @@ textarea:focus {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
+    .wd_logo img {
+        width: 40%;
+    }
+    .wd_slider_textinfo img{
+        width: 40%;
+    }
     .wd_main_menu ul {
         width: 100%;
         text-align: center;
@@ -2487,13 +2496,28 @@ textarea:focus {
     }
 }
 
-@media (min-width: 480px) and (max-width: 767px) {}
+@media (min-width: 480px) and (max-width: 767px) {
+    .wd_logo img {
+        width: 40%;
+    }
+    .wd_slider_textinfo img{
+        width: 60%;
+    }
+}
 
 @media (max-width: 480px) {}
 
 @media (max-width: 479px) {
+
+    .wd_logo img {
+        width: 40%;
+    }
     .wd_slider_textinfo {
         width: 100%;
+    }
+
+    .wd_slider_textinfo img{
+        width: 60%;
     }
 
     .wd_about_infobox_date {
