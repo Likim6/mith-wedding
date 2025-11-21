@@ -2509,6 +2509,15 @@ textarea:focus {
 
 @media (max-width: 479px) {
 
+    .wd_slider_wrapper {
+        background: url(../images/header/1.jpg);
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-position-x: center;
+        
+    }
+
     .wd_logo img {
         width: 40%;
     }
