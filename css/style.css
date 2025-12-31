@@ -1085,7 +1085,7 @@ textarea:focus {
 .wd_guest_wrapper {
     float: left;
     width: 100%;
-    background-image: url(../images/content/guest_bg.jpg);
+    background-image: url(../images/content/photorealistic-wedding-venue-with-intricate-decor-ornaments.jpg);
     background-size: cover;
     background-position: 100% 100%;
     background-repeat: no-repeat;
@@ -1126,12 +1126,20 @@ textarea:focus {
     color: #f07677;
 }
 
+.wd_blog_info h3 span {
+    color: #f07677;
+}
+
 .wd_guest_infobox h4 {
     float: left;
     width: 100%;
     color: #ffffff;
     font-family: 'Lora', serif;
     margin: 0px 0px 15px 0px;
+}
+
+.wd_guest_infobox h4 span {
+    color: #f07677;
 }
 
 .wd_guest_infobox p {
@@ -1914,7 +1922,7 @@ textarea:focus {
 .wd_contact_wrapper {
     float: left;
     width: 100%;
-    background-image: url(../images/content/contact_bg.jpg);
+    background-image: url(../images/content/photo_2025.jpeg);
     background-size: cover;
     background-position: 100% 100%;
     background-repeat: no-repeat;
@@ -1936,6 +1944,10 @@ textarea:focus {
 
 .wd_contact_wrapper .wd_heading h1 {
     color: #ffffff;
+}
+
+.col-img .wd_contact_form .img-con img {
+    width: 100%;
 }
 
 .wd_contact_form {
@@ -2073,7 +2085,8 @@ textarea:focus {
 .wd_footer_bottom_wrapper {
     float: left;
     width: 100%;
-    background-color: #0c0c0c;
+    /* background-color: #0c0c0c; */
+    background-color: white;
     position: relative;
     padding-left: 50px;
     padding-right: 50px;
@@ -2086,7 +2099,8 @@ textarea:focus {
 
 .wd_footer_section img {
     float: left;
-    width: auto;
+    /* width: auto; */
+    width: 200px;
 }
 
 .wd_footer_section p {
@@ -2094,7 +2108,7 @@ textarea:focus {
     width: auto;
     padding-top: 20px;
     margin: 0px;
-    color: #cccccc;
+    color: #000000;
 }
 
 #scroll {
@@ -2514,6 +2528,10 @@ textarea:focus {
 @media (max-width: 480px) {}
 
 @media (max-width: 479px) {
+    .col-img .wd_contact_form {
+        display: flex;
+        flex-direction: column;
+    }
 
     .wd_slider_wrapper {
         background: url(../images/header/1.jpg);
