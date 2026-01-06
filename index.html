@@ -31,14 +31,155 @@ Purchase:
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/ico" href="images/header/favicon.ico" />
+	<!-- Language Toggle CSS -->
+	<style>
+		/* Language Toggle Styles */
+		/* Desktop language toggle - hide on mobile */
+		.desktop-language-toggle {
+			float: right;
+			margin-top: 25px;
+			margin-right: 20px;
+			display: flex;
+			align-items: center;
+			z-index: 1001;
+		}
+
+		.language-toggle-btn {
+			background: none;
+			border: 1px solid #f07677;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			padding: 0;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.language-toggle-btn:hover {
+			border: 1px solid #111111;
+			transform: scale(1.1);
+		}
+
+		.language-toggle-btn img {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		#languageText {
+			color: #111111;
+			margin-left: 5px;
+			font-size: 14px;
+			font-weight: 500;
+			font-family: 'Lora', serif;
+		}
+
+		/* Mobile language toggle - hidden by default */
+		.mobile-language-toggle {
+			display: none;
+			padding: 15px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		.mobile-language-toggle .language-toggle-btn {
+			width: 35px;
+			height: 35px;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+
+		.mobile-language-toggle .language-toggle-btn img {
+			width: 25px;
+			height: 25px;
+		}
+
+		#mobileLanguageText {
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: 500;
+			font-family: 'Lora', serif;
+			vertical-align: middle;
+		}
+
+		/* For fixed menu */
+		.menu_fixed .desktop-language-toggle {
+			margin-top: 15px;
+		}
+
+		/* Responsive styles */
+		@media (max-width: 1199px) {
+			.desktop-language-toggle {
+				margin-top: 15px;
+				margin-right: 10px;
+			}
+		}
+
+		@media (max-width: 991px) {
+			.desktop-language-toggle {
+				position: absolute;
+				right: 60px;
+				top: 20px;
+				margin: 0;
+			}
+
+			.menu_fixed .desktop-language-toggle {
+				top: 15px;
+			}
+
+			#languageText {
+				display: none;
+			}
+		}
+
+		/* KEY CHANGE: Hide desktop toggle and show mobile toggle on small screens */
+		@media (max-width: 767px) {
+			.desktop-language-toggle {
+				display: none !important;
+			}
+
+			.mobile-language-toggle {
+				display: block;
+			}
+
+			.wd_menu_btn {
+				right: 15px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.mobile-language-toggle {
+				padding: 10px 15px;
+			}
+
+			.mobile-language-toggle .language-toggle-btn {
+				width: 30px;
+				height: 30px;
+			}
+
+			.mobile-language-toggle .language-toggle-btn img {
+				width: 20px;
+				height: 20px;
+			}
+
+			#mobileLanguageText {
+				font-size: 14px;
+			}
+		}
+	</style>
 </head>
 
 <body>
 	<!-- preloader Start -->
 	<!-- <div id="preloader">
-		<div id="status"><img src="images/header/preloader.gif" id="preloader_image" alt="loader">
-		</div>
-	</div> -->
+        <div id="status"><img src="images/header/preloader.gif" id="preloader_image" alt="loader">
+        </div>
+    </div> -->
 	<!-- Header Wrapper Start -->
 	<div section-scroll='0' class="wd_scroll_wrap">
 		<div class="wd_slider_wrapper ">
@@ -51,19 +192,34 @@ Purchase:
 					</div>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+					<!-- Desktop Language Toggle (visible on larger screens) -->
+					<div class="desktop-language-toggle">
+						<button id="languageToggle" class="language-toggle-btn">
+							<img id="languageFlag" src="images/flags/kh.png" alt="Khmer Flag">
+						</button>
+						<!-- <span id="languageText">ភាសាខ្មែរ</span> -->
+					</div>
+
 					<div class="wd_mainmenu_wrapper">
 						<div class="wd_main_menu_wrapper">
 							<div class="wd_main_menu wd_single_index_menu">
+								<div class="mobile-language-toggle">
+									<button id="mobileLanguageToggle" class="language-toggle-btn">
+										<img id="mobileLanguageFlag" src="images/flags/kh.png" alt="Khmer Flag">
+									</button>
+									<span id="mobileLanguageText">ភាសាខ្មែរ</span>
+								</div>
+
 								<ul>
-									<li><a href="0">Home</a></li>
-									<li><a href="1">About Us</a></li>
-									<li><a href="2">Love Story</a></li>
-									<li><a href="3">Events</a></li>
-									<li><a href="4">Rsvp</a></li>
-									<li><a href="5">Family</a></li>
-									<li><a href="6">Gallery</a></li>
-									<li><a href="7">Blog</a></li>
-									<li><a href="8">Contact Us</a></li>
+									<li><a href="0" data-translate="home">Home</a></li>
+									<li><a href="1" data-translate="about">About Us</a></li>
+									<li><a href="2" data-translate="story">Love Story</a></li>
+									<li><a href="3" data-translate="events">Events</a></li>
+									<li><a href="4" data-translate="rsvp">Rsvp</a></li>
+									<li><a href="5" data-translate="family">Family</a></li>
+									<li><a href="6" data-translate="gallery">Gallery</a></li>
+									<li><a href="7" data-translate="blog">Blog</a></li>
+									<li><a href="8" data-translate="contact">ABA</a></li>
 								</ul>
 							</div>
 						</div>
@@ -72,8 +228,8 @@ Purchase:
 			</div>
 			<div class="wd_slider_textinfo">
 				<img src="images/header/Asset 5@4x.png" alt="Slider Image" class="img-responsive">
-				<h3>24 Jan. 2026</h3>
-				<h1>Save The Date</h1>
+				<h3 data-translate="date">24 Jan. 2026</h3>
+				<h1 data-translate="saveDate">Save The Date</h1>
 				<div class="clearfix"></div>
 				<img src="images/content/Asset 3@4x.png" alt="Heading" class="img-responsive">
 			</div>
@@ -93,8 +249,8 @@ Purchase:
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-								<h4>are getting married!</h4>
-								<h1>Groom and Bride</h1>
+								<h4 data-translate="gettingMarried">are getting married!</h4>
+								<h1 data-translate="groomBride">Groom and Bride</h1>
 								<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 							</div>
 						</div>
@@ -102,9 +258,10 @@ Purchase:
 							<div class="wd_about_infobox wd_toppadder20">
 								<div class="wd_about_infobox_img">
 									<span><img src="images/content/line.png" alt="Line" class="img-responsive"></span>
-									<img src="images/content/0Z0A3872-Enhanced-NR.JPG" alt="Groom" class="img-responsive">
+									<img src="images/content/0Z0A3872-Enhanced-NR.JPG" alt="Groom"
+										class="img-responsive">
 								</div>
-								<h2>Rithy Mith</h2>
+								<h2 data-translate="groomName">Rithy Mith</h2>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-21 col-xs-12 col-lg-push-4 col-md-push-4 col-sm-push-0">
@@ -113,27 +270,27 @@ Purchase:
 									<span><img src="images/content/line.png" alt="Line" class="img-responsive"></span>
 									<img src="images/content/0Z0A3801 copy.JPG" alt="Groom" class="img-responsive">
 								</div>
-								<h2>Sangyu</h2>
+								<h2 data-translate="brideName">Sangyu</h2>
 							</div>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-pull-4 col-md-pull-4 col-sm-pull-0">
 							<div class="wd_about_infobox">
-								<h1>Invitation</h1>
+								<h1 data-translate="invitation">Invitation</h1>
 								<div class="wd_about_infobox_date">
-									<p>We inviting you and your family on</p>
-									<h3>Saturday</h3>
-									<h2>24 Jan. 2026</h2>
+									<p data-translate="invitationText">We inviting you and your family on</p>
+									<h3 data-translate="saturday">Saturday</h3>
+									<h2 data-translate="dateFull">24 Jan. 2026</h2>
 									<!-- <p>At St. Thomas's Church, London, U.K.</p> -->
 								</div>
 								<!-- <div class="wd_btn wd_single_index_menu_rsvp">
-									<a href="4">rsvp</a>
-								</div> -->
+                                    <a href="4">rsvp</a>
+                                </div> -->
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="wd_timer_wrapper">
 								<div class="wd_center_words">
-									<h4>Don't miss it!</h4>
+									<h4 data-translate="dontMiss">Don't miss it!</h4>
 								</div>
 								<div id="clockdiv">
 									<div><span class="days"></span>
@@ -150,7 +307,7 @@ Purchase:
 									</div>
 								</div>
 								<div class="wd_center_words">
-									<h4>until we get married!</h4>
+									<h4 data-translate="untilMarried">until we get married!</h4>
 								</div>
 							</div>
 						</div>
@@ -168,8 +325,8 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4>Jenny & Mark</h4>
-							<h1>Our true love story</h1>
+							<h4 data-translate="storyNames">Jenny & Mark</h4>
+							<h1 data-translate="storyTitle">Our true love story</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
@@ -183,18 +340,19 @@ Purchase:
 								</div>
 								<div class="wd_story_covers_box_datails">
 									<span>17 Sep. 2022</span>
-									<h1>Our First Date</h1>
+									<h1 data-translate="firstDate">Our First Date</h1>
 									<span>Brown Coffee</span>
-									<p>A bit shy but who knew a simple first date at a coffee shop would be the beginning of our love story.</p>
+									<p data-translate="firstDateDesc">A bit shy but who knew a simple first date at a coffee shop would be the
+										beginning of our love story.</p>
 								</div>
 							</div>
 							<div class="wd_story_covers_box_right">
 								<div class="wd_story_dot"><span></span></div>
 								<div class="wd_story_covers_box_datails">
 									<span>25 Dec. 2022</span>
-									<h1>Our First Christmas</h1>
+									<h1 data-translate="firstChristmas">Our First Christmas</h1>
 									<span>At Her Church</span>
-									<p>The joy we felt that Christmas now leads us here, to the joy of a lifetime.</p>
+									<p data-translate="firstChristmasDesc">The joy we felt that Christmas now leads us here, to the joy of a lifetime.</p>
 								</div>
 								<div class="wd_story_covers_box_img">
 									<img src="images/content/IMG_0823.HEIC" alt="Story">
@@ -214,41 +372,45 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4>Ceremony & party</h4>
-							<h1>THE WEDDING EVENT</h1>
+							<h4 data-translate="ceremonyParty">Ceremony & party</h4>
+							<h1 data-translate="weddingEvent">THE WEDDING EVENT</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 						<div class="wd_event_infobox">
-							<h2>Main Ceremony</h2>
-							<h1>3:00 pm</h1>
+							<h2 data-translate="mainCeremony">Main Ceremony</h2>
+							<h1 data-translate="mainTime">3:00 pm</h1>
 							<span>Department E</span>
 							<!-- <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
-								auctor vel velit auctor aliquet. Aenean sollicitudin, lorem quis <a href="#">Read
-									More...</a></p> -->
+                                auctor vel velit auctor aliquet. Aenean sollicitudin, lorem quis <a href="#">Read
+                                    More...</a></p> -->
 							<div class="clearfix"></div>
-							<a target="_blank" href="https://www.google.com/maps?q=Golden+Coast+Wedding+Center,+Pr+136+A,+Kampot+070204&ftid=0x310835768aacc47f:0x342c64bc5a91b02b&entry=gps&lucs=,94297695,94275415,94284484,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI1LjQ5LjkuODM4ODk5MTgzMBgAIIgnKlEsOTQyOTc2OTUsOTQyNzU0MTUsOTQyODQ0ODQsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAktI&skid=a4d2e2d3-171f-4590-a982-3c91363d1ad5&g_st=ipc"><img src="images/content/map.png" alt="Map" class="img-responsive"></a>
+							<a target="_blank"
+								href="https://www.google.com/maps?q=Golden+Coast+Wedding+Center,+Pr+136+A,+Kampot+070204&ftid=0x310835768aacc47f:0x342c64bc5a91b02b&entry=gps&lucs=,94297695,94275415,94284484,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI1LjQ5LjkuODM4ODk5MTgzMBgAIIgnKlEsOTQyOTc2OTUsOTQyNzU0MTUsOTQyODQ0ODQsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAktI&skid=a4d2e2d3-171f-4590-a982-3c91363d1ad5&g_st=ipc"><img
+									src="images/content/map.png" alt="Map" class="img-responsive"></a>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-push-4 col-md-push-4 col-sm-push-0">
 						<div class="wd_event_infobox">
-							<h2>Wedding Party</h2>
-							<h1>5:00 pm</h1>
+							<h2 data-translate="weddingParty">Wedding Party</h2>
+							<h1 data-translate="partyTime">5:00 pm</h1>
 							<span>Department E</span>
 							<!-- <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
-								auctor vel velit auctor aliquet. Aenean sollicitudin, lorem quis <a href="#">Read
-									More...</a></p> -->
+                                auctor vel velit auctor aliquet. Aenean sollicitudin, lorem quis <a href="#">Read
+                                    More...</a></p> -->
 							<div class="clearfix"></div>
-							<a target="_blank" href="https://www.google.com/maps?q=Golden+Coast+Wedding+Center,+Pr+136+A,+Kampot+070204&ftid=0x310835768aacc47f:0x342c64bc5a91b02b&entry=gps&lucs=,94297695,94275415,94284484,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI1LjQ5LjkuODM4ODk5MTgzMBgAIIgnKlEsOTQyOTc2OTUsOTQyNzU0MTUsOTQyODQ0ODQsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAktI&skid=a4d2e2d3-171f-4590-a982-3c91363d1ad5&g_st=ipc"><img src="images/content/map.png" alt="Map" class="img-responsive"></a>
+							<a target="_blank"
+								href="https://www.google.com/maps?q=Golden+Coast+Wedding+Center,+Pr+136+A,+Kampot+070204&ftid=0x310835768aacc47f:0x342c64bc5a91b02b&entry=gps&lucs=,94297695,94275415,94284484,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI1LjQ5LjkuODM4ODk5MTgzMBgAIIgnKlEsOTQyOTc2OTUsOTQyNzU0MTUsOTQyODQ0ODQsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAktI&skid=a4d2e2d3-171f-4590-a982-3c91363d1ad5&g_st=ipc"><img
+									src="images/content/map.png" alt="Map" class="img-responsive"></a>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-pull-4 col-md-pull-4 col-sm-pull-0">
 						<div class="wd_event_infobox">
 							<img src="images/content/event_img.gif" alt="Event Image">
-							<div class="wd_btn wd_single_index_menu_rsvp">
-								<a href="4">rsvp</a>
-							</div>
+							<!-- <div class="wd_btn wd_single_index_menu_rsvp">
+                                <a href="4">rsvp</a>
+                            </div> -->
 						</div>
 					</div>
 				</div>
@@ -263,75 +425,33 @@ Purchase:
 			<div class="container">
 				<div class="row">
 					<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4>Rsvp</h4>
-							<h1>Be our guest!</h1>
-							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
-						</div>
-					</div> -->
+                        <div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
+                            <h4>Rsvp</h4>
+                            <h1>Be our guest!</h1>
+                            <img src="images/content/heading.png" alt="Heading" class="img-responsive">
+                        </div>
+                    </div> -->
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 						<div class="wd_guest_infobox">
-							<h2>We are honor to have you in our <span>Wedding</span></h2>
-							<h4>Please arrive at <span>2:50pm 24/01/2026 Before the Main Ceremony</span></h4>
-							<p>Numbers 6:24–26 "May the Lord bless you and protect you..."</p>
+							<h2 data-translate="honor">We are honor to have you in our <span data-translate="wedding">Wedding</span></h2>
+							<h4 data-translate="arrive">Please arrive at <span data-translate="arriveTime">2:50pm 24/01/2026 Before the Main Ceremony</span></h4>
+							<p data-translate="blessing">Numbers 6:24–26 "May the Lord bless you and protect you..."</p>
 							<!-- <h2><span>Gift Registry</span></h2>
-							<p>What we want most for our wedding is to have our friends and family there to celebrate
-								the occasion with us. If you would like to get us something, w’d love that too. you can
-								find our registries here :</p> -->
-								<!-- image container -->
-								<div class="image-container">
-									<img src="images/content/IMG_1456.JPG" alt="Groom" class="img-responsive" style="border-radius: 10px;">
-								</div>
+                            <p>What we want most for our wedding is to have our friends and family there to celebrate
+                                the occasion with us. If you would like to get us something, w'd love that too. you can
+                                find our registries here :</p> -->
+							<!-- image container -->
+							<div class="image-container">
+								<img src="images/content/IMG_1456.JPG" alt="Groom" class="img-responsive"
+									style="border-radius: 10px;">
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 6rem;">
-						<!-- <div class="wd_guest_formbox">
-							<span>Are You Attending?</span>
-							<h4>Rsvp Here!</h4>
-							<div class="wd_guest_form">
-								<div class="row">
-									<form>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<label>Full Name :</label>
-											<input type="text" name="full_name" placeholder="Full Name" class="require">
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<label>Email :</label>
-											<input type="text" name="email" placeholder="Email" class="require"
-												data-valid="email" data-error="Email should be valid.">
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<label>Guests :</label>
-											<select name="guest_no" class="require">
-												<option value="0">00</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-											</select>
-										</div>
-										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-											<label>Event :</label>
-											<select name="event_name" class="require">
-												<option value="all">All Events</option>
-												<option value="party">Party Events</option>
-												<option value="marriage">Marriage Events</option>
-											</select>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<div class="response"></div>
-										</div>
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-											<div class="wd_btn">
-												<button type="button" class="submitForm" form-type="inquiry">Send a
-													Message</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div> -->
 						<!-- Image container -->
 						<div class="wd_guest_imgbox">
-							<img style="width: 30rem; height: auto" src="images/content/IMG_2519.JPG" alt="Guest Image" class="img-responsive">
+							<img style="width: 30rem; height: auto" src="images/content/IMG_2519.JPG" alt="Guest Image"
+								class="img-responsive">
 						</div>
 					</div>
 				</div>
@@ -347,15 +467,15 @@ Purchase:
 								<div class="item">
 									<div class="wd_testimo_box">
 										<img src="images/content/heart.png" alt="Testimonial">
-										<p>'I have found the one whom my soul loves.'</p>
-										<h4>~ Song of Solomon 3:4 ~</h4>
+										<p data-translate="testimonialVerse1">'I have found the one whom my soul loves.'</p>
+										<h4 data-translate="testimonialVerse1Source">~ Song of Solomon 3:4 ~</h4>
 									</div>
 								</div>
 								<div class="item">
 									<div class="wd_testimo_box">
 										<img src="images/content/heart.png" alt="Testimonial">
-										<p>'Do everything in love.'</p>
-										<h4>~ 1 Corinthians 16:14 ~</h4>
+										<p data-translate="testimonialVerse2">'Do everything in love.'</p>
+										<h4 data-translate="testimonialVerse2Source">~ 1 Corinthians 16:14 ~</h4>
 									</div>
 								</div>
 							</div>
@@ -373,8 +493,8 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4>most imp. persons</h4>
-							<h1>Lovable Family</h1>
+							<h4 data-translate="importantPersons">most imp. persons</h4>
+							<h1 data-translate="lovableFamily">Lovable Family</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
@@ -383,11 +503,11 @@ Purchase:
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#groom" aria-controls="groom" role="tab"
 									data-toggle="tab"><img src="images/content/IMG_0825.JPG" alt="Groom">
-									<p>Rithy Mith</p>
+									<p data-translate="groomName">Rithy Mith</p>
 								</a></li>
 							<li role="presentation"><a href="#bride" aria-controls="bride" role="tab"
 									data-toggle="tab"><img src="images/content/IMG_0827.jpg" alt="Bride">
-									<p>Sangyu</p>
+									<p data-translate="brideName">Sangyu</p>
 								</a></li>
 						</ul>
 						<!-- Tab panes -->
@@ -397,61 +517,61 @@ Purchase:
 									<div class="owl-carousel owl-theme">
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="groom-father">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/200x200 Father.png" alt="Family">
 													</div>
-													<h2>Mr. Channa Rith</h2>
-													<p>(Mith’s Father)</p>
+													<h2 data-translate="groomFamilyNames.father">Mr. Channa Rith</h2>
+													<p data-translate="fatherLabel">(Mith's Father)</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="groom-mother">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/2x2 Mother.png" alt="Family">
 													</div>
-													<h2>Leang Sitha</h2>
-													<p>(Mith’s Mother)</p>
+													<h2 data-translate="groomFamilyNames.mother">Leang Sitha</h2>
+													<p data-translate="motherLabel">(Mith's Mother)</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="groom-olderBrother">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/2x2 Tit soma.png" alt="Family">
 													</div>
-													<h2>Lav TitSoma</h2>
-													<p>(Mith’s Older Brother)</p>
+													<h2 data-translate="groomFamilyNames.olderBrother">Lav TitSoma</h2>
+													<p data-translate="olderBrotherLabel">(Mith's Older Brother)</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="groom-littleBrother">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/200x200 Joseph.png" alt="Family">
 													</div>
-													<h2>Lav Joseph</h2>
-													<p>(Mith’s Little Brother)</p>
+													<h2 data-translate="groomFamilyNames.littleBrother">Lav Joseph</h2>
+													<p data-translate="littleBrotherLabel">(Mith's Little Brother)</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="groom-littleSister">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/200x200 sota.png" alt="Family">
 													</div>
-													<h2>Lav MoniSota</h2>
-													<p>(Mith’s little sister)</p>
+													<h2 data-translate="groomFamilyNames.littleSister">Lav MoniSota</h2>
+													<p data-translate="littleSisterLabel">(Mith's little sister)</p>
 												</div>
 											</div>
 										</div>
@@ -463,73 +583,73 @@ Purchase:
 									<div class="owl-carousel owl-theme">
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="bride-father">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/200x200jpg.png" alt="Family">
 													</div>
-													<h2>Mr. Them Pheakdey</h2>
-													<p>(Yu’s Father)</p>
+													<h2 data-translate="brideFamilyNames.father">Mr. Them Pheakdey</h2>
+													<p data-translate="yusFatherLabel">(Yu's Father)</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="bride-mother">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/20x20xmak.png" alt="Family">
 													</div>
-													<h2>Penh Dany</h2>
-													<p>(Yu’s Mother)</p>
+													<h2 data-translate="brideFamilyNames.mother">Penh Dany</h2>
+													<p data-translate="yusMotherLabel">(Yu's Mother)</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="bride-sister1">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/j1.png" alt="Family">
 													</div>
-													<h2>Thorn sangyech</h2>
-													<p>Sister</p>
+													<h2 data-translate="brideFamilyNames.sister1">Thorn sangyech</h2>
+													<p data-translate="sisterLabel">Sister</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="bride-sister2">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/j2.png" alt="Family">
 													</div>
-													<h2>Thorn sangyee</h2>
-													<p>Sister</p>
+													<h2 data-translate="brideFamilyNames.sister2">Thorn sangyee</h2>
+													<p data-translate="sisterLabel2">Sister</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="bride-brother">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/br03.png" alt="Family">
 													</div>
-													<h2>Thorn Udom </h2>
-													<p>Brother</p>
+													<h2 data-translate="brideFamilyNames.brother">Thorn Udom </h2>
+													<p data-translate="brotherLabel">Brother</p>
 												</div>
 											</div>
 										</div>
 										<div class="item">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="wd_family_infobox">
+												<div class="wd_family_infobox" data-family-member="bride-youngestSister">
 													<div class="wd_family_infobox_img">
 														<span><img src="images/content/line2.png" alt="Line"></span>
 														<img src="images/content/sis4.png" alt="Family">
 													</div>
-													<h2>Thorn sangye</h2>
-													<p>Youngest Sister</p>
+													<h2 data-translate="brideFamilyNames.youngestSister">Thorn sangye</h2>
+													<p data-translate="youngestSisterLabel">Youngest Sister</p>
 												</div>
 											</div>
 										</div>
@@ -550,8 +670,8 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4>Jenny & Mark</h4>
-							<h1>memorable photo gallery</h1>
+							<h4 data-translate="galleryNames">Jenny & Mark</h4>
+							<h1 data-translate="memorableGallery">memorable photo gallery</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
@@ -564,8 +684,8 @@ Purchase:
 											<img src="images/content/570x570 1.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Kampot</p>
-												<a href="images/content/800x800 1.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 1.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 									</div>
@@ -574,16 +694,16 @@ Purchase:
 											<img src="images/content/570 x270 5.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Bridesmaid</p>
-												<a href="images/content/800x800 5.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 5.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 										<div class="wd_gallery_slide">
 											<img src="images/content/570x270 6.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Groomsman</p>
-												<a href="images/content/800x800 6.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 6.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 									</div>
@@ -594,8 +714,8 @@ Purchase:
 											<img src="images/content/570x570 2.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Groomsman</p>
-												<a href="images/content/800x800 4.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 4.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 									</div>
@@ -604,16 +724,16 @@ Purchase:
 											<img src="images/content/570x270 7.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Bridesmaid</p>
-												<a href="images/content/800x800 7.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 7.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 										<div class="wd_gallery_slide">
 											<img src="images/content/570 x 270 3.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Groomsman</p>
-												<a href="images/content/800x800 3.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 3.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 									</div>
@@ -624,8 +744,8 @@ Purchase:
 											<img src="images/content/570 x570 3.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Groomsman</p>
-												<a href="images/content/800x800 3x.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 3x.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 									</div>
@@ -634,80 +754,20 @@ Purchase:
 											<img src="images/content/570x270 8.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Bridesmaid</p>
-												<a href="images/content/800x800 8.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 8.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 										<div class="wd_gallery_slide">
 											<img src="images/content/570x200 9.png" alt="Wedding">
 											<div class="ast_glr_overlay">
 												<p>Bridesmaid</p>
-												<a href="images/content/800x800 9.png" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
+												<a href="images/content/800x800 9.png" title=""><i class="fa fa-expand"
+														aria-hidden="true"></i></a>
 											</div>
 										</div>
 									</div>
 								</div>
-								<!-- <div class="item">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="wd_gallery_slide">
-											<img src="images/content/image_1.jpg" alt="Wedding">
-											<div class="ast_glr_overlay">
-												<p>Making A Love</p>
-												<a href="images/content/image_1_zoom.jpg" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="wd_gallery_slide">
-											<img src="images/content/image_small_1.jpg" alt="Wedding">
-											<div class="ast_glr_overlay">
-												<p>Making A Love</p>
-												<a href="images/content/image_small_1_zoom.jpg" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
-											</div>
-										</div>
-										<div class="wd_gallery_slide">
-											<img src="images/content/image_small_2.jpg" alt="Wedding">
-											<div class="ast_glr_overlay">
-												<p>Making A Love</p>
-												<a href="images/content/image_small_2_zoom.jpg" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="wd_gallery_slide">
-											<img src="images/content/image_2.jpg" alt="Wedding">
-											<div class="ast_glr_overlay">
-												<p>Making A Love</p>
-												<a href="images/content/image_2_zoom.jpg" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="wd_gallery_slide">
-											<img src="images/content/image_small_3.jpg" alt="Wedding">
-											<div class="ast_glr_overlay">
-												<p>Making A Love</p>
-												<a href="images/content/image_small_3_zoom.jpg" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
-											</div>
-										</div>
-										<div class="wd_gallery_slide">
-											<img src="images/content/image_small_4.jpg" alt="Wedding">
-											<div class="ast_glr_overlay">
-												<p>Making A Love</p>
-												<a href="images/content/image_small_4_zoom.jpg" title=""><i
-														class="fa fa-expand" aria-hidden="true"></i></a>
-											</div>
-										</div>
-									</div>
-								</div> -->
 							</div>
 						</div>
 					</div>
@@ -723,145 +783,97 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4>Wedding Journal</h4>
-							<h1>from our blog</h1>
+							<h4 data-translate="weddingJournal">Wedding Journal</h4>
+							<h1 data-translate="fromBlog">from our blog</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
 					<div class="wd_blog_box">
-						<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="wd_blog_img">
-								<img src="images/content/blog1.jpg" alt="Blog">
-							</div>
-						</div> -->
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="wd_blog_info">
-								<h3>To Our <span>Parents</span></h3>				
-								<p>To my parents, thank you for your endless love, sacrifices, and guidance to put God first in my Life and the Love of God shaped me into who I am today.
+								<h3 data-translate="parentsTitle">To Our <span>Parents</span></h3>
+								<p data-translate="parentsText">To my parents, thank you for your endless love, sacrifices, and guidance to put God
+									first in my Life and the Love of God shaped me into who I am today.
 
-									To my parents-in-law, thank you for welcoming me into your family with open hearts and for your love and support.
-									
-									We are truly blessed to have all of you. From the bottom of our hearts, thank you.”</p>
+									To my parents-in-law, thank you for welcoming me into your family with open hearts
+									and for your love and support.
+
+									We are truly blessed to have all of you. From the bottom of our hearts, thank you.
+								</p>
 							</div>
 						</div>
 					</div>
 					<div class="wd_blog_box">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-push-6 col-md-push-6 col-sm-push-6">
-							<!-- <div class="wd_blog_img">
-								<img src="images/content/blog2.jpg" alt="Blog">
-							</div> -->
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-pull-6 col-md-pull-6 col-sm-pull-6">
 							<div class="wd_blog_info">
-								<h3>To The <span>Company</span></h3>
-								<!-- <ul>
-									<li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i> 20 Nov. 2026</a>
-									</li>
-									<li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 240 View</a></li>
-									<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 143 Likes</a></li>
-								</ul> -->
-								<p>“I would also like to take a moment to thank my company.
-									Thank you for your support, Especially my uncle Pu Lo Pu Thea …..Guidances during this important season of my life. Your kindness truly means a lot to me.</p>
-								<!-- <div class="wd_btn">
-									<a href="#">read more</a>
-								</div> -->
+								<h3 data-translate="companyTitle">To The <span>Company</span></h3>
+								<p data-translate="companyText">"I would also like to take a moment to thank my company.
+									Thank you for your support, Especially my uncle Pu Lo Pu Thea …..Guidances during
+									this important season of my life. Your kindness truly means a lot to me.</p>
 							</div>
 						</div>
 					</div>
 					<div class="wd_blog_box">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-pull-6 col-md-pull-6 col-sm-pull-6">
-							<!-- <div class="wd_blog_img">
-								<img src="images/content/blog3.jpg" alt="Blog">
-							</div> -->
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-pull-6 col-md-pull-6 col-sm-pull-6">
 							<div class="wd_blog_info">
-								<h3>Thanks To My <span>Older Brother</span></h3>
-								<!-- <ul>
-									<li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i> 20 Nov. 2026</a>
-									</li>
-									<li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 240 View</a></li>
-									<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 143 Likes</a></li>
-								</ul> -->
-								<p>I want to thank to my brother Soma he helps me a lot in my life Especially From the day I was born, you have always watched over me, protected , and guided me like a second parent. You carried responsibilities quietly, sacrificed so much, and never asked for anything in return.
+								<h3 data-translate="brotherTitle">Thanks To My <span>Older Brother</span></h3>
+								<p data-translate="brotherText">I want to thank to my brother Soma he helps me a lot in my life Especially From the
+									day I was born, you have always watched over me, protected , and guided me like a
+									second parent. You carried responsibilities quietly, sacrificed so much, and never
+									asked for anything in return.
 
-									Your love, advice, and strength means a lot to me.Having you standing with me on this important day means more than words can ever express. I am truly blessed to call you my brother.”</p>
-								<!-- <div class="wd_btn">
-									<a href="#">read more</a>
-								</div> -->
+									Your love, advice, and strength means a lot to me.Having you standing with me on
+									this important day means more than words can ever express. I am truly blessed to
+									call you my brother.</p>
 							</div>
 						</div>
 					</div>
 					<div class="wd_blog_box">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<!-- <div class="wd_blog_img">
-								<img src="images/content/blog3.jpg" alt="Blog">
-							</div> -->
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="wd_blog_info">
-								<h3>Thanks To <span>Dr. Pan & Ming</span></h3>
-								<!-- <ul>
-									<li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i> 20 Nov. 2026</a>
-									</li>
-									<li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 240 View</a></li>
-									<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 143 Likes</a></li>
-								</ul> -->
-								<p>I thank both of you and also someone God used to shape my life during I study in secondary school . You taught me the Bible, and cook me special Eggs, and helped build my faith in Christ.</p>
-								<!-- <div class="wd_btn">
-									<a href="#">read more</a>
-								</div> -->
+								<h3 data-translate="panmingTitle">Thanks To <span>Dr. Pan & Ming</span></h3>
+								<p data-translate="panmingText">I thank both of you and also someone God used to shape my life during I study in
+									secondary school . You taught me the Bible, and cook me special Eggs, and helped
+									build my faith in Christ.</p>
 							</div>
 						</div>
 					</div>
 					<div class="wd_blog_box">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<!-- <div class="wd_blog_img">
-								<img src="images/content/blog3.jpg" alt="Blog">
-							</div> -->
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="wd_blog_info">
-								<h3>Prince <span>Darcy & Nene</span></h3>
-								<!-- <ul>
-									<li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i> 20 Nov. 2026</a>
-									</li>
-									<li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 240 View</a></li>
-									<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 143 Likes</a></li>
-								</ul> -->
-								<p>I want to thank you both for taking care of me especially since the day Jesus brought you two to me at The Life Center through Teacher Ben. You helped me draw closer to Jesus by your love, give me food, love and  give me best education.</p>
-								<!-- <div class="wd_btn">
-									<a href="#">read more</a>
-								</div> -->
+								<h3 data-translate="darcyTitle">Prince <span>Darcy & Nene</span></h3>
+								<p data-translate="darcyText">I want to thank you both for taking care of me especially since the day Jesus brought
+									you two to me at The Life Center through Teacher Ben. You helped me draw closer to
+									Jesus by your love, give me food, love and give me best education.</p>
 							</div>
 						</div>
 					</div>
 
 					<div class="wd_blog_box">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<!-- <div class="wd_blog_img">
-								<img src="images/content/blog3.jpg" alt="Blog">
-							</div> -->
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="wd_blog_info">
-								<h3>Thanks To <span>Others</span></h3>
-								<!-- <ul>
-									<li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i> 20 Nov. 2026</a>
-									</li>
-									<li><a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 240 View</a></li>
-									<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 143 Likes</a></li>
-								</ul> -->
-								<p>
-									Thanks for groomsmen and bridesmaids for helping. 
-									Thanks Kim for Coding and Mosa for assisting.</p>
-								<!-- <div class="wd_btn">
-									<a href="#">read more</a>
-								</div> -->
+								<h3 data-translate="othersTitle">Thanks To <span>Others</span></h3>
+								<p data-translate="othersText">
+									Thanks for groomsmen and bridesmaids for helping.
+									Thanks Kim for Coding and Mosa for assisting.
+									Thanks Uncle Junior and his wife helping on my wedding.
+									Thanks Bong Vanna for translating.
+									Thanks Every Nation Church for performance.
+									May Jesus Bless you all.</p>
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -875,14 +887,15 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown">
-							<h4>If Any Query</h4>
-							<h1>Contact Us</h1>
+							<h4 data-translate="anyQuery">If Any Query</h4>
+							<h1 data-translate="contactUs">Contact Us</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
 					<div
 						class="col-img col-lg-8 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
-						<div class="wd_contact_form" style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
+						<div class="wd_contact_form"
+							style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
 							<div class="img-con">
 								<img src="images/content/aba-one.jpeg" alt="">
 							</div>
@@ -891,8 +904,9 @@ Purchase:
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="wd_btn" style="display: flex; justify-content: center; align-items: center; padding-top: 10px;">
-								<button type="button" class="submitForm" form-type="contact">Love Gift</button>
+							<div class="wd_btn"
+								style="display: flex; justify-content: center; align-items: center; padding-top: 10px;">
+								<button type="button" class="submitForm" form-type="contact" data-translate="loveGift">Love Gift</button>
 							</div>
 						</div>
 					</div>
@@ -901,14 +915,14 @@ Purchase:
 		</div>
 		<!-- Contact Wrapper End -->
 		<!-- Footer Wrapper Start -->
-		
+
 		<div class="wd_footer_bottom_wrapper wd_toppadder50 wd_bottompadder50">
 			<a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;"><i
 					class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
 			<div class="col-md-12">
 				<div class="wd_footer_section">
 					<img src="images/header/Wedding mith-1@4x.png" alt="Logo" class="img-responsive">
-					<p>@ Copyright 2025-26 All Rights Reserved.</p>
+					<p data-translate="copyright">@ Copyright 2025-26 All Rights Reserved.</p>
 				</div>
 			</div>
 		</div>
@@ -923,45 +937,442 @@ Purchase:
 	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
 	<script type="text/javascript" src="js/wow.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
+
+	<!-- Language Toggle JavaScript -->
 	<script>
-        $(document).ready(function () {
-            var weddingDate = new Date("January 24, 2026 15:00:00").getTime(); // 15:00 PM
+		$(document).ready(function () {
+			// Countdown timer (enhanced with timezone)
+			var weddingDate = new Date("January 24, 2026 15:00:00 GMT+7").getTime(); // Cambodia TZ
+			var timer = setInterval(function () {
+				var now = new Date().getTime();
+				var distance = weddingDate - now;
 
-            var timer = setInterval(function () {
-                var now = new Date().getTime();
-                var distance = weddingDate - now;
+				if (distance < 0) {
+					clearInterval(timer);
+					$("#clockdiv").html("<h1 style='color:#e0a800; font-family: \"Playfair Display\", serif;'>We're Married!</h1>");
+					return;
+				}
 
-                if (distance < 0) {
-                    clearInterval(timer);
-                    $("#clockdiv").html("<h1 style='color:#e0a800; font-family: \"Playfair Display\", serif;'>We're Married!</h1>");
-                    return;
-                }
+				var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+				days = days < 10 ? "0" + days : days;
+				hours = hours < 10 ? "0" + hours : hours;
+				minutes = minutes < 10 ? "0" + minutes : minutes;
+				seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                // Add leading zero
-                days = days < 10 ? "0" + days : days;
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+				$(".days").text(days);
+				$(".hours").text(hours);
+				$(".minutes").text(minutes);
+				$(".seconds").text(seconds);
 
-                // Update display
-                $(".days").text(days);
-                $(".hours").text(hours);
-                $(".minutes").text(minutes);
-                $(".seconds").text(seconds);
+				// Pluralization (improved)
+				$(".smalltext").eq(0).text(parseInt(days) === 1 ? "Day" : "Days");
+				$(".smalltext").eq(1).text(parseInt(hours) === 1 ? "Hour" : "Hours");
+				$(".smalltext").eq(2).text(parseInt(minutes) === 1 ? "Minute" : "Minutes");
+				$(".smalltext").eq(3).text(parseInt(seconds) === 1 ? "Second" : "Seconds");
+			}, 1000);
 
-                // Auto singular/plural
-                $(".smalltext").eq(0).text(days == "01" ? "Day" : "Days");
-                $(".smalltext").eq(1).text(hours == "01" ? "Hour" : "Hours");
-                $(".smalltext").eq(2).text(minutes == "01" ? "Minute" : "Minutes");
-                $(".smalltext").eq(3).text(seconds == "01" ? "Second" : "Seconds");
-            }, 1000);
-        });
-    </script>
+			// Language data (complete)
+			const translations = {
+				en: {
+					// Navigation
+					home: "Home",
+					about: "About Us",
+					story: "Love Story",
+					events: "Events",
+					rsvp: "Rsvp",
+					family: "Family",
+					gallery: "Gallery",
+					blog: "Blog",
+					contact: "ABA",
+
+					// Header
+					date: "24 Jan. 2026",
+					saveDate: "Save The Date",
+
+					// About section
+					gettingMarried: "are getting married!",
+					groomBride: "Groom and Bride",
+					groomName: "Rithy Mith",
+					brideName: "Sangyu",
+					invitation: "Invitation",
+					invitationText: "We inviting you and your family on",
+					saturday: "Saturday",
+					dateFull: "24 Jan. 2026",
+					dontMiss: "Don't miss it!",
+					untilMarried: "until we get married!",
+
+					// Story section
+					storyNames: "Rithy Mith & Sangyu",
+					storyTitle: "Our true love story",
+					firstDate: "Our First Date",
+					firstDateDesc: "A bit shy but who knew a simple first date at a coffee shop would be the beginning of our love story.",
+					firstChristmas: "Our First Christmas",
+					firstChristmasDesc: "The joy we felt that Christmas now leads us here, to the joy of a lifetime.",
+
+					// Events section
+					ceremonyParty: "Ceremony & party",
+					weddingEvent: "THE WEDDING EVENT",
+					mainCeremony: "Main Ceremony",
+					weddingParty: "Wedding Party",
+					mainTime: "3:00 pm",
+					partyTime: "5:00 pm",
+
+					// Guest section
+					honor: "We are honor to have you in our",
+					wedding: "Wedding",
+					arrive: "Please arrive at",
+					arriveTime: "2:50pm 24/01/2026 Before the Main Ceremony",
+					blessing: "Numbers 6:24–26 \"May the Lord bless you and protect you...\"",
+
+					// Family section
+					importantPersons: "most imp. persons",
+					lovableFamily: "Lovable Family",
+					fatherLabel: "(Mith's Father)",
+					motherLabel: "(Mith's Mother)",
+					olderBrotherLabel: "(Mith's Older Brother)",
+					littleBrotherLabel: "(Mith's Little Brother)",
+					littleSisterLabel: "(Mith's little sister)",
+					yusFatherLabel: "(Yu's Father)",
+					yusMotherLabel: "(Yu's Mother)",
+					sisterLabel: "Sister",
+					sisterLabel2: "Sister",
+					brotherLabel: "Brother",
+					youngestSisterLabel: "Youngest Sister",
+					groomFamilyNames: {
+						father: "Mr. Channa Rith",
+						mother: "Leang Sitha",
+						olderBrother: "Lav TitSoma",
+						littleBrother: "Lav Joseph",
+						littleSister: "Lav MoniSota"
+					},
+					brideFamilyNames: {
+						father: "Mr. Them Pheakdey",
+						mother: "Penh Dany",
+						sister1: "Thorn sangyech",
+						sister2: "Thorn sangyee",
+						brother: "Thorn Udom",
+						youngestSister: "Thorn sangye"
+					},
+
+					// Gallery section
+					galleryNames: "Rithy Mith & Sangyu",
+					memorableGallery: "memorable photo gallery",
+
+					// Blog section
+					weddingJournal: "Wedding Journal",
+					fromBlog: "from our blog",
+					parentsTitle: "To Our <span>Parents</span>",
+					parentsText: "To my parents, thank you for your endless love, sacrifices, and guidance to put God first in my Life and the Love of God shaped me into who I am today.<br><br>To my parents-in-law, thank you for welcoming me into your family with open hearts and for your love and support.<br><br>We are truly blessed to have all of you. From the bottom of our hearts, thank you.",
+					companyTitle: "To The <span>Company</span>",
+					companyText: "\"I would also like to take a moment to thank my company. Thank you for your support, Especially my uncle Pu Lo Pu Thea …..Guidances during this important season of my life. Your kindness truly means a lot to me.\"",
+					brotherTitle: "Thanks To My <span>Older Brother</span>",
+					brotherText: "I want to thank to my brother Soma he helps me a lot in my life Especially From the day I was born, you have always watched over me, protected , and guided me like a second parent. You carried responsibilities quietly, sacrificed so much, and never asked for anything in return.<br><br>Your love, advice, and strength means a lot to me.Having you standing with me on this important day means more than words can ever express. I am truly blessed to call you my brother.",
+					panmingTitle: "Thanks To <span>Dr. Pan & Ming</span>",
+					panmingText: "I thank both of you and also someone God used to shape my life during I study in secondary school . You taught me the Bible, and cook me special Eggs, and helped build my faith in Christ.",
+					darcyTitle: "Prince <span>Darcy & Nene</span>",
+					darcyText: "I want to thank you both for taking care of me especially since the day Jesus brought you two to me at The Life Center through Teacher Ben. You helped me draw closer to Jesus by your love, give me food, love and give me best education.",
+					othersTitle: "Thanks To <span>Others</span>",
+					othersText: "Thanks for groomsmen and bridesmaids for helping. Thanks Kim for Coding and Mosa for assisting. Thanks Uncle Junior and his wife helping on my wedding. Thanks Bong Vanna for translating. Thanks Every Nation Church for performance. May Jesus Bless you all.",
+
+					// Contact section
+					anyQuery: "If Any Query",
+					contactUs: "Contact Us",
+					loveGift: "Love Gift",
+
+					// Testimonial section
+					testimonialVerse1: "'I have found the one whom my soul loves.'",
+					testimonialVerse1Source: "~ Song of Solomon 3:4 ~",
+					testimonialVerse2: "'Do everything in love.'",
+					testimonialVerse2Source: "~ 1 Corinthians 16:14 ~",
+
+					// Footer
+					copyright: "@ Copyright 2025-26 All Rights Reserved. Dev: Buck."
+				},
+				kh: {
+					// Navigation
+					home: "ទំព័រដើម",
+					about: "អំពីពួកយើង",
+					story: "រឿងស្នេហា",
+					events: "ព្រឹត្តិការណ៍",
+					rsvp: "បញ្ជាក់វត្តមាន",
+					family: "គ្រួសារ",
+					gallery: "វិចិត្រសាល",
+					blog: "ប្លក់",
+					contact: "ABA",
+
+					// Header
+					date: "២៤ មករា ២០២៦",
+					saveDate: "រក្សាកាលបរិច្ឆេទ",
+
+					// About section
+					gettingMarried: "កំពុងរៀបអាពាហ៍ពិពាហ៍!",
+					groomBride: "ខ្ញុំបាទ និង ខ្ញុំស្រី",
+					groomName: "ប្ញទ្ធីមីត",
+					brideName: "សាងយូ",
+					invitation: "ការអញ្ជើញ",
+					invitationText: "យើងខ្ញុំពិតចង់អញ្ជើញអ្នក និងគ្រួសារអ្នកនៅ",
+					saturday: "ថ្ងៃសៅរ៍",
+					dateFull: "២៤ មករា ២០២៦",
+					dontMiss: "កុំឱ្យខកខាន!",
+					untilMarried: "រហូតដល់ពេលយើងរៀបការ!",
+
+					// Story section
+					// storyNames: "រិទ្ធិ មិត្ត និង សង់យ៉ូ",
+					storyTitle: "រឿងស្នេហាពិតរបស់យើង",
+					firstDate: "ជួបលើកដំបូង",
+					firstDateDesc: "អៀនតិច តែនរណាទៅដឹងថាការជួបលើកដំបូងក្នុងហាងកាហ្វេក្លាយទៅជាការចាប់ផ្តើមក្តីស្រឡាញ់របស់យើង។",
+					firstChristmas: "Christmas លើកដំបូង",
+					firstChristmasDesc: "អំណរនៅថ្ងៃ Christmas នឹង មិនដឹងថាអាចនាំយើងមកដល់ពេញមួយជីវិតនេះសោះ។",
+
+					// Events section
+					ceremonyParty: "ពិធី និងពិធីសំណោក",
+					weddingEvent: "ពិធីរៀបការ",
+					mainCeremony: "កម្មវិធីផ្សំផ្គុំ",
+					weddingParty: "អាហារពេលល្ងាច",
+					mainTime: "៣:០០ ល្ងាច",
+					partyTime: "៥:០០ ល្ងាច",
+
+					// Guest section
+					honor: "យើងពិតជាមានកិត្តិយសដែលមានអ្នកនៅក្នុង",
+					wedding: "ពិធីរៀបការ",
+					arrive: "សូមមកដល់នៅម៉ោង",
+					arriveTime: "២:៥០ ល្ងាច ២៤/០១/២០២៦ មុនពិធីសំខាន់",
+					blessing: "លេខរៀង ៦:២៤-២៦ \"សូមព្រះអម្ចាស់ប្រទានពរ និងការពារអ្នក...\"",
+
+					// Family section
+					importantPersons: "មនុស្សសំខាន់បំផុត",
+					lovableFamily: "គ្រួសារស្នេហា",
+					fatherLabel: "(ឪពុកមីត)",
+					motherLabel: "(ម្តាយមីត)",
+					olderBrotherLabel: "(បងប្រុសធំមីត)",
+					littleBrotherLabel: "(ប្អូនប្រុសតូចមីត)",
+					littleSisterLabel: "(ប្អូនស្រីតូចមីត)",
+					yusFatherLabel: "(ឪពុកសាងយូ)",
+					yusMotherLabel: "(ម្តាយសាងយូ)",
+					sisterLabel: "បងស្រីទី១",
+					sisterLabel2: "បងស្រីទី២",
+					brotherLabel: "បងប្រុស",
+					youngestSisterLabel: "ប្អូនស្រីពៅ",
+					groomFamilyNames: {
+						father: "លោក ចាន់ ណារិទ្ជ",
+						mother: "លោកស្រី លាង សុីថា",
+						olderBrother: "លោក ឡាវ ទិតសុម៉ា",
+						littleBrother: "ឡាវ យូសែហ្វ",
+						littleSister: "ឡាវ មុនីសូតា"
+					},
+					brideFamilyNames: {
+						father: "លោក ថែម ភក្តី",
+						mother: "ពេញ ដានី",
+						sister1: "ថន សាំងយុិច",
+						sister2: "ថន សាំងយី",
+						brother: "ថន ឧត្តម",
+						youngestSister: "ថន សាំងយ៉េ"
+					},
+
+					// Gallery section
+					galleryNames: "រិទ្ធិ មិត្ត និង សង់យ៉ូ",
+					memorableGallery: "វិចិត្រសាលរូបថតដែលគួរចងចាំ",
+
+					// Blog section
+					weddingJournal: "កំណត់ហេតុរៀបការ",
+					fromBlog: "ពីប្លក់របស់យើង",
+					parentsTitle: "ជូនចំពោះ <span>ឪពុកអ្នកម្តាយ</span> ទាំងសងខាង",
+					parentsText: "ជូនចំពោះលោកឪពុកអ្នកម្តាយរបស់កូន៖ កូនសូមអរគុណយ៉ាងជ្រាលជ្រៅចំពោះក្តីស្រឡាញ់ដែលមិនចេះរីងស្ងួតរបស់នាក់ទាំងពីរ ទាំងការលះបង់ និងការណែនាំ ដែលបានបង្រៀនឱ្យកូនដាក់ព្រះជាម្ចាស់ជាចម្បងនៅក្នុងជីវិត។<br><br>ក្តីស្រឡាញ់របស់ព្រះអង្គបានសូនរូបកូន ឱ្យក្លាយជាមនុស្សដូចពេលបច្ចុប្បន្ននេះ។",
+					companyTitle: "ដល់ <span>ក្រុមហ៊ុន</span>",
+					companyText: "ខ្ញុំក៏សូមឆ្លៀតឱកាសនេះ ដើម្បីថ្លែងអំណរគុណដល់ក្រុមហ៊ុនផងដែរ។ សូមអរគុណសម្រាប់ការគាំទ្រ ជាពិសេសចំពោះ ពូឡូ ពូធា ចន (Jonh) និង ពូសុងហ៊ី...សម្រាប់ការណែនាំ និងការតម្រង់ទិសក្នុងអំឡុងពេលដ៏សំខាន់នៃជីវិតរបស់ខ្ញុំនេះ។<br><br> សេចក្តីសប្បុរសរបស់អស់លោកពូ ពិតជាមានន័យធំធេងណាស់សម្រាប់ខ្ញុំ។",
+					brotherTitle: "ប្អូនចង់ថ្លែងអំណរគុណដល់បងប្រុស <span>(Soma)</span>",
+					brotherText: "ខ្ញុំចង់អរគុណបងប្រុសធំរបស់ខ្ញុំ ស៊ូម៉ា ដែលបានជួយជ្រោមជ្រែងប្អូនយ៉ាងច្រើនក្នុងជីវិត។ ជាពិសេស ចាប់តាំងពីថ្ងៃដែលប្អូនបានកើតមក ហ៊ាត់តែមើលថែ ការពារ និងណែនាំប្អូន ដូចជាឪពុកម្តាយទីពីរ។ ហ៊ាបានទទួលរ៉ាប់រងរាល់បន្ទុកទាំងឡាយដោយខ្លួនឯងលះបង់អ្វីៗជាច្រើន និងមិនដែលទាមទារអ្វីមកវិញឡើយ។<br><br>ក្តីស្រឡាញ់ ដំបូន្មានហ៊ា និងភាពរឹងមាំរបស់ហ៊ា មានន័យធំធេងណាស់សម្រាប់ប្អូន។ ការដែលមានហ៊ានៅក្បែរប្អូនក្នុងថ្ងៃដ៏សំខាន់នេះ គឺមានន័យលើសពីពាក្យពេចន៍ទាំងឡាយដែលអាចរៀបរាប់បាន។ ប្អូនពិតជាមានសំណាងណាស់ ដែលមានបងជាបងប្រុសរបស់ប្អូន។",
+					panmingTitle: "ជូនចំពោះ <span>លោកគ្រូពេទ្យ ប៉ាន់ និងមីង</span>",
+					panmingText: "ខ្ញុំសូមអរគុណអ្នកទាំងពីរ ដែលជាអ្នកដែលព្រះអង្គបានប្រើ ដើម្បីជួយរូបខ្ញុំ កាលពីខ្ញុំនៅរៀនថ្នាក់អនុវិទ្យាល័យ។ អ្នកទាំងពីរបានបង្រៀនព្រះគម្ពីរនិង ធ្វើម្ហូប ឱ្យខ្ញុំញ៉ាំ និងបានជួយកសាងជំនឿរបស់ខ្ញុំនៅក្នុងព្រះគ្រីស្ទ",
+					darcyTitle: "ជូនចំពោះ <span>ប៉ា Darcy និង ម៉ាក់ Nene</span>",
+					darcyText: "ខ្ញុំ សូមអរគុណអ្នកទាំងពីរ ខ្លាំងណាស់ សម្រាប់ការមើលថែរូបខ្ញុំ ជាពិសេសចាប់តាំងពីថ្ងៃដែលព្រះយេស៊ូវបាននាំអ្នកទាំងពីរមកជួបខ្ញុំ នៅមជ្ឈមណ្ឌល The Life Center តាមរយៈលោកគ្រូ Ben។<br><br>អ្នកទាំងពីរបានជួយឱ្យកូន កាន់តែជិតស្និទ្ធជាមួយព្រះយេស៊ូវ តាមរយៈសេចក្តីស្រឡាញ់របស់អ្នកទាំងពីរ ផ្តល់អាហារញុំា ការផ្តល់ក្តីស្រឡាញ់ និងការផ្តល់ការអប់រំដ៏ល្អបំផុតដល់ខ្ញុំ។",
+					othersTitle: "ថ្លែងអំណរគុណដល់<span>សមាជិកដទៃទៀត</span>",
+					othersText: "សូមអរគុណដល់មិត្តភក្តិកំដរខាងប្រុស និងខាងស្រី សម្រាប់ការជួយជ្រោមជ្រែង។ សូមអរគុណ Kim សម្រាប់ការជួយផ្នែកកូដ (Coding) និង Tithya ព្រមទាំង Mosa។ សូមអរគុណ លោកពូ Junior និងភរិយា ដែលបានជួយក្នុងពិធីការមង្គលការរបស់ខ្ញុំ។ សូមអរគុណដល់ ព្រះវិហារ Every Nation សម្រាប់ការសម្តែងក្នុងកម្មវិធី។",
+
+					// Contact section
+					anyQuery: "បើមានសំណួរ",
+					contactUs: "ទំនាក់ទំនងពួកយើង",
+					loveGift: "អំណោយក្តីស្រឡាញ់",
+
+					// Testimonial section
+					testimonialVerse1: "'ខ្ញុំបានស្វែងរកឃើញអ្នកដែលខ្ញុំស្រឡាញ់'",
+					testimonialVerse1Source: "~ សាឡូម៉ូន ៣:៤ ~",
+					testimonialVerse2: "'ធ្វើអ្វីទាំងអស់នៅក្នុងក្តីស្រឡាញ់!'",
+					testimonialVerse2Source: "~ ១ កូរិន ១៦:១៤ ~",
+
+					// Footer
+					copyright: "@ សិទ្ធិ ២០២៥-២៦ រក្សាទុកគ្រប់យ៉ាង។ Dev: Buck"
+				}
+			};
+
+			// Toggle language function
+			let currentLanguage = 'en';
+
+			function toggleLanguage() {
+				currentLanguage = currentLanguage === 'kh' ? 'en' : 'kh';
+				const lang = translations[currentLanguage];
+				const flagSrc = currentLanguage === 'kh' ? 'images/flags/us.png' : 'images/flags/kh.png';
+				const toggleText = currentLanguage === 'kh' ? 'English' : 'ភាសាខ្មែរ';
+				$('#languageFlag, #mobileLanguageFlag').attr('src', flagSrc);
+				$('#languageText, #mobileLanguageText').text(toggleText);
+				updateTextContent();
+				saveLanguagePreference();
+			}
+
+			// Update all text content based on current language
+			function updateTextContent() {
+				const lang = translations[currentLanguage];
+
+				// Update navigation
+				$('[data-translate="home"]').text(lang.home);
+				$('[data-translate="about"]').text(lang.about);
+				$('[data-translate="story"]').text(lang.story);
+				$('[data-translate="events"]').text(lang.events);
+				$('[data-translate="rsvp"]').text(lang.rsvp);
+				$('[data-translate="family"]').text(lang.family);
+				$('[data-translate="gallery"]').text(lang.gallery);
+				$('[data-translate="blog"]').text(lang.blog);
+				$('[data-translate="contact"]').text(lang.contact);
+
+				// Update header
+				$('[data-translate="date"]').text(lang.date);
+				$('[data-translate="saveDate"]').text(lang.saveDate);
+
+				// Update about section
+				$('[data-translate="gettingMarried"]').text(lang.gettingMarried);
+				$('[data-translate="groomBride"]').text(lang.groomBride);
+				$('[data-translate="groomName"]:eq(0)').text(lang.groomName)
+				$('[data-translate="brideName"]:eq(0)').text(lang.brideName);
+				$('[data-translate="invitation"]').text(lang.invitation);
+				$('[data-translate="invitationText"]').text(lang.invitationText);
+				$('[data-translate="saturday"]').text(lang.saturday);
+				$('[data-translate="dateFull"]').text(lang.dateFull);
+				$('[data-translate="dontMiss"]').text(lang.dontMiss);
+				$('[data-translate="untilMarried"]').text(lang.untilMarried);
+
+				// Update story section
+				$('[data-translate="storyNames"]').text(lang.storyNames);
+				$('[data-translate="storyTitle"]').text(lang.storyTitle);
+				$('[data-translate="firstDate"]').text(lang.firstDate);
+				$('[data-translate="firstDateDesc"]').text(lang.firstDateDesc);
+				$('[data-translate="firstChristmas"]').text(lang.firstChristmas);
+				$('[data-translate="firstChristmasDesc"]').text(lang.firstChristmasDesc);
+
+				// Update events section
+				$('[data-translate="ceremonyParty"]').text(lang.ceremonyParty);
+				$('[data-translate="weddingEvent"]').text(lang.weddingEvent);
+				$('[data-translate="mainCeremony"]').text(lang.mainCeremony);
+				$('[data-translate="mainTime"]').text(lang.mainTime);
+				$('[data-translate="weddingParty"]').text(lang.weddingParty);
+				$('[data-translate="partyTime"]').text(lang.partyTime);
+
+				// Update guest section
+				$('[data-translate="honor"]').text(lang.honor);
+				$('[data-translate="wedding"]:eq(1)').text(lang.wedding); // Guest wedding
+				$('[data-translate="arrive"]').text(lang.arrive);
+				$('[data-translate="arriveTime"]').text(lang.arriveTime);
+				$('[data-translate="blessing"]').text(lang.blessing);
+
+				// Update testimonial
+				$('[data-translate="testimonialVerse1"]').text(lang.testimonialVerse1);
+				$('[data-translate="testimonialVerse1Source"]').text(lang.testimonialVerse1Source);
+				$('[data-translate="testimonialVerse2"]').text(lang.testimonialVerse2);
+				$('[data-translate="testimonialVerse2Source"]').text(lang.testimonialVerse2Source);
+
+				// Update family section
+				$('[data-translate="importantPersons"]:eq(1)').text(lang.importantPersons); // Family heading
+				$('[data-translate="lovableFamily"]').text(lang.lovableFamily);
+				$('[data-translate="groomName"]:eq(1)').text(lang.groomName); // Tab
+				$('[data-translate="brideName"]:eq(1)').text(lang.brideName); // Tab
+
+				// Family names and labels (attribute-based)
+				// Groom
+				$('[data-family-member="groom-father"] [data-translate="groomFamilyNames.father"]').text(lang.groomFamilyNames.father);
+				$('[data-family-member="groom-father"] [data-translate="fatherLabel"]').text(lang.fatherLabel);
+				$('[data-family-member="groom-mother"] [data-translate="groomFamilyNames.mother"]').text(lang.groomFamilyNames.mother);
+				$('[data-family-member="groom-mother"] [data-translate="motherLabel"]').text(lang.motherLabel);
+				$('[data-family-member="groom-olderBrother"] [data-translate="groomFamilyNames.olderBrother"]').text(lang.groomFamilyNames.olderBrother);
+				$('[data-family-member="groom-olderBrother"] [data-translate="olderBrotherLabel"]').text(lang.olderBrotherLabel);
+				$('[data-family-member="groom-littleBrother"] [data-translate="groomFamilyNames.littleBrother"]').text(lang.groomFamilyNames.littleBrother);
+				$('[data-family-member="groom-littleBrother"] [data-translate="littleBrotherLabel"]').text(lang.littleBrotherLabel);
+				$('[data-family-member="groom-littleSister"] [data-translate="groomFamilyNames.littleSister"]').text(lang.groomFamilyNames.littleSister);
+				$('[data-family-member="groom-littleSister"] [data-translate="littleSisterLabel"]').text(lang.littleSisterLabel);
+
+				// Bride
+				$('[data-family-member="bride-father"] [data-translate="brideFamilyNames.father"]').text(lang.brideFamilyNames.father);
+				$('[data-family-member="bride-father"] [data-translate="yusFatherLabel"]').text(lang.yusFatherLabel);
+				$('[data-family-member="bride-mother"] [data-translate="brideFamilyNames.mother"]').text(lang.brideFamilyNames.mother);
+				$('[data-family-member="bride-mother"] [data-translate="yusMotherLabel"]').text(lang.yusMotherLabel);
+				$('[data-family-member="bride-sister1"] [data-translate="brideFamilyNames.sister1"]').text(lang.brideFamilyNames.sister1);
+				$('[data-family-member="bride-sister1"] [data-translate="sisterLabel"]:eq(0)').text(lang.sisterLabel);
+				$('[data-family-member="bride-sister1"] [data-translate="sisterLabel"]:eq(1)').text(lang.sisterLabel);
+				$('[data-family-member="bride-sister2"] [data-translate="brideFamilyNames.sister2"]').text(lang.brideFamilyNames.sister2);
+				$('[data-family-member="bride-sister2"] [data-translate="sisterLabel2"]:eq(1)').text(lang.sisterLabel2);
+				$('[data-family-member="bride-brother"] [data-translate="brideFamilyNames.brother"]').text(lang.brideFamilyNames.brother);
+				$('[data-family-member="bride-brother"] [data-translate="brotherLabel"]').text(lang.brotherLabel);
+				$('[data-family-member="bride-youngestSister"] [data-translate="brideFamilyNames.youngestSister"]').text(lang.brideFamilyNames.youngestSister);
+				$('[data-family-member="bride-youngestSister"] [data-translate="youngestSisterLabel"]').text(lang.youngestSisterLabel);
+
+				// Update gallery section
+				$('[data-translate="galleryNames"]').text(lang.galleryNames);
+				$('[data-translate="memorableGallery"]').text(lang.memorableGallery);
+
+				// Update blog section
+				$('[data-translate="weddingJournal"]').text(lang.weddingJournal);
+				$('[data-translate="fromBlog"]').text(lang.fromBlog);
+				$('[data-translate="parentsTitle"]').html(lang.parentsTitle);
+				$('[data-translate="parentsText"]').html(lang.parentsText);
+				$('[data-translate="companyTitle"]').html(lang.companyTitle);
+				$('[data-translate="companyText"]').html(lang.companyText);
+				$('[data-translate="brotherTitle"]').html(lang.brotherTitle);
+				$('[data-translate="brotherText"]').html(lang.brotherText);
+				$('[data-translate="panmingTitle"]').html(lang.panmingTitle);
+				$('[data-translate="panmingText"]').html(lang.panmingText);
+				$('[data-translate="darcyTitle"]').html(lang.darcyTitle);
+				$('[data-translate="darcyText"]').html(lang.darcyText);
+				$('[data-translate="othersTitle"]').html(lang.othersTitle);
+				$('[data-translate="othersText"]').html(lang.othersText);
+
+				// Update contact section
+				$('[data-translate="anyQuery"]').text(lang.anyQuery);
+				$('[data-translate="contactUs"]').text(lang.contactUs);
+				$('[data-translate="loveGift"]').text(lang.loveGift);
+
+				// Update footer
+				$('[data-translate="copyright"]').text(lang.copyright);
+
+				// Refresh carousels if needed
+				$('.owl-carousel').trigger('refresh.owl.carousel');
+			}
+
+			// Save language preference to localStorage
+			function saveLanguagePreference() {
+				localStorage.setItem('weddingLanguage', currentLanguage);
+			}
+
+			// Load saved language preference
+			function loadLanguagePreference() {
+				const savedLanguage = localStorage.getItem('weddingLanguage') || 'en';
+				currentLanguage = savedLanguage;
+				const lang = translations[currentLanguage];
+				const flagSrc = currentLanguage === 'kh' ? 'images/flags/us.png' : 'images/flags/kh.png';
+				const toggleText = currentLanguage === 'kh' ? 'English' : 'ភាសាខ្មែរ';
+				$('#languageFlag, #mobileLanguageFlag').attr('src', flagSrc);
+				$('#languageText, #mobileLanguageText').text(toggleText);
+				updateTextContent();
+			}
+
+			// Initialize
+			loadLanguagePreference();
+
+			// Add click events to both toggle buttons
+			$('#languageToggle, #mobileLanguageToggle').click(toggleLanguage);
+		});
+	</script>
 	<!--main js file end-->
 </body>
 

@@ -2645,3 +2645,108 @@ textarea:focus {
 }
 
 /*-- Responsive css End --*/
+
+/* Language Toggle Styles - Added to existing CSS */
+.language-toggle-wrapper {
+    float: right;
+    margin-top: 25px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+}
+
+.language-toggle-btn {
+    background: none;
+    border: 1px solid #f07677;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-toggle-btn:hover {
+    border: 1px solid #111111;
+    transform: scale(1.1);
+}
+
+.language-toggle-btn img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#languageText {
+    color: #111111;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Lora', serif;
+}
+
+/* For fixed menu */
+.menu_fixed .language-toggle-wrapper {
+    margin-top: 15px;
+}
+
+/* Responsive styles for language toggle */
+@media (max-width: 1199px) {
+    .language-toggle-wrapper {
+        margin-top: 15px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 991px) {
+    .language-toggle-wrapper {
+        position: absolute;
+        right: 60px;
+        top: 20px;
+        margin: 0;
+    }
+    
+    .menu_fixed .language-toggle-wrapper {
+        top: 15px;
+    }
+    
+    #languageText {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .language-toggle-wrapper {
+        right: 50px;
+        top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-toggle-wrapper {
+        right: 45px;
+        top: 10px;
+    }
+    
+    .language-toggle-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .language-toggle-btn img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 380px) {
+    .language-toggle-wrapper {
+        right: 40px;
+    }
+}
