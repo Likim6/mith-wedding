@@ -31,6 +31,10 @@ Purchase:
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<!-- favicon links -->
 	<link rel="shortcut icon" type="image/ico" href="images/header/favicon.ico" />
+	<!-- Khmer Battambang Font Import -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&display=swap');
+	</style>
 	<!-- Language Toggle CSS -->
 	<style>
 		/* Language Toggle Styles */
@@ -169,6 +173,65 @@ Purchase:
 
 			#mobileLanguageText {
 				font-size: 14px;
+			}
+		}
+	</style>
+	<!-- Khmer Font Styles (applied via body class) -->
+	<style>
+		/* Khmer Mode: Apply Battambang font for body and headings when Khmer is active */
+		body.khmer {
+			font-family: 'Battambang', sans-serif;
+		}
+
+		body.khmer h1,
+		body.khmer h2,
+		body.khmer h3,
+		body.khmer h4,
+		body.khmer h5,
+		body.khmer h6,
+		body.khmer .h1,
+		body.khmer .h2,
+		body.khmer .h3,
+		body.khmer .h4,
+		body.khmer .h5,
+		body.khmer .h6 {
+			font-family: 'Battambang', sans-serif;
+			font-weight: 700; /* Bolder for headings in Khmer */
+		}
+
+		/* Ensure smalltext and other italic elements adapt well */
+		body.khmer .smalltext {
+			font-style: normal; /* Avoid italic issues with Khmer script */
+			font-weight: 400;
+		}
+
+		/* Navigation and button text in Khmer mode */
+		body.khmer .wd_main_menu ul li a,
+		body.khmer .wd_btn a,
+		body.khmer .wd_btn button {
+			font-family: 'Battambang', sans-serif;
+			font-weight: 400;
+		}
+
+		/* Specific elements like language text */
+		body.khmer #languageText,
+		body.khmer #mobileLanguageText {
+			font-family: 'Battambang', sans-serif;
+		}
+
+		/* Responsive: Ensure font scales well on mobile */
+		@media (max-width: 767px) {
+			body.khmer {
+				font-size: 15px; /* Slight increase for readability in Khmer on small screens */
+				line-height: 1.4;
+			}
+
+			body.khmer h1 {
+				font-size: 32px;
+			}
+
+			body.khmer h2 {
+				font-size: 28px;
 			}
 		}
 	</style>
@@ -1191,7 +1254,7 @@ Purchase:
 					companyTitle: "ដល់ <span>ក្រុមហ៊ុន</span>",
 					companyText: "ខ្ញុំក៏សូមឆ្លៀតឱកាសនេះ ដើម្បីថ្លែងអំណរគុណដល់ក្រុមហ៊ុនផងដែរ។ សូមអរគុណសម្រាប់ការគាំទ្រ ជាពិសេសចំពោះ ពូឡូ ពូធា ចន (Jonh) និង ពូសុងហ៊ី...សម្រាប់ការណែនាំ និងការតម្រង់ទិសក្នុងអំឡុងពេលដ៏សំខាន់នៃជីវិតរបស់ខ្ញុំនេះ។<br><br> សេចក្តីសប្បុរសរបស់អស់លោកពូ ពិតជាមានន័យធំធេងណាស់សម្រាប់ខ្ញុំ។",
 					brotherTitle: "ប្អូនចង់ថ្លែងអំណរគុណដល់បងប្រុស <span>(Soma)</span>",
-					brotherText: "ខ្ញុំចង់អរគុណបងប្រុសធំរបស់ខ្ញុំ ស៊ូម៉ា ដែលបានជួយជ្រោមជ្រែងប្អូនយ៉ាងច្រើនក្នុងជីវិត។ ជាពិសេស ចាប់តាំងពីថ្ងៃដែលប្អូនបានកើតមក ហ៊ាត់តែមើលថែ ការពារ និងណែនាំប្អូន ដូចជាឪពុកម្តាយទីពីរ។ ហ៊ាប់ទទួលរ៉ាប់រងរាល់បន្ទុកទាំងឡាយដោយខ្លួនឯងលះបង់អ្វីៗជាច្រើន និងមិនដែលទាមទារអ្វីមកវិញឡើយ។<br><br>ក្តីស្រឡាញ់ ដំបូន្មានហ៊ា និងភាពរឹងមាំរបស់ហ៊ា មានន័យធំធេងណាស់សម្រាប់ប្អូន។ ការដែលមានហ៊ានៅក្បែរប្អូនក្នុងថ្ងៃដ៏សំខាន់នេះ គឺមានន័យលើសពីពាក្យពេចន៍ទាំងឡាយដែលអាចរៀបរាប់បាន។ ប្អូនពិតជាមានសំណាងណាស់ ដែលមានបងជាបងប្រុសរបស់ប្អូន។",
+					brotherText: "ខ្ញុំចង់អរគុណបងប្រុសធំរបស់ខ្ញុំ ស៊ូម៉ា ដែលបានជួយជ្រោមជ្រែងប្អូនយ៉ាងច្រើនក្នុងជីវិត។ ជាពិសេស ចាប់តាំងពីថ្ងៃដែលប្អូនបានកើតមក ហ៊ាតតែមើលថែ ការពារ និងណែនាំប្អូន ដូចជាឪពុកម្តាយទីពីរ។ ហ៊ាប់ទទួលរ៉ាប់រងរាល់បន្ទុកទាំងឡាយដោយខ្លួនឯងលះបង់អ្វីៗជាច្រើន និងមិនដែលទាមទារអ្វីមកវិញឡើយ។<br><br>ក្តីស្រឡាញ់ ដំបូន្មានហ៊ា និងភាពរឹងមាំរបស់ហ៊ា មានន័យធំធេងណាស់សម្រាប់ប្អូន។ ការដែលមានហ៊ានៅក្បែរប្អូនក្នុងថ្ងៃដ៏សំខាន់នេះ គឺមានន័យលើសពីពាក្យពេចន៍ទាំងឡាយដែលអាចរៀបរាប់បាន។ ប្អូនពិតជាមានសំណាងណាស់ ដែលមានបងជាបងប្រុសរបស់ប្អូន។",
 					panmingTitle: "ជូនចំពោះ <span>លោកគ្រូពេទ្យ ប៉ាន់ និងមីង</span>",
 					panmingText: "ខ្ញុំសូមអរគុណអ្នកទាំងពីរ ដែលជាអ្នកដែលព្រះអង្គបានប្រើ ដើម្បីជួយរូបខ្ញុំ កាលពីខ្ញុំនៅរៀនថ្នាក់អនុវិទ្យាល័យ។ អ្នកទាំងពីរបានបង្រៀនព្រះគម្ពីរនិង ធ្វើម្ហូប ឱ្យខ្ញុំញ៉ាំ និងបានជួយកសាងជំនឿរបស់ខ្ញុំនៅក្នុងព្រះគ្រីស្ទ",
 					darcyTitle: "ជូនចំពោះ <span>ប៉ា Darcy និង ម៉ាក់ Nene</span>",
@@ -1227,6 +1290,12 @@ Purchase:
 				$('#languageText, #mobileLanguageText').text(toggleText);
 				updateTextContent();
 				updateImages(); // NEW: Update images on toggle
+				// Apply Khmer font mode
+				if (currentLanguage === 'kh') {
+					$('body').addClass('khmer');
+				} else {
+					$('body').removeClass('khmer');
+				}
 				saveLanguagePreference();
 			}
 
@@ -1390,6 +1459,12 @@ Purchase:
 				$('#languageText, #mobileLanguageText').text(toggleText);
 				updateTextContent();
 				updateImages();
+				// Apply Khmer font mode on load
+				if (currentLanguage === 'kh') {
+					$('body').addClass('khmer');
+				} else {
+					$('body').removeClass('khmer');
+				}
 			}
 
 			// Initialize
