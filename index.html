@@ -199,6 +199,14 @@ Purchase:
 			font-weight: 700; /* Bolder for headings in Khmer */
 		}
 
+		/* NEW: Target testimonial specifically to override carousel/theme styles */
+		body.khmer .wd_testimonial_wrapper .wd_testimo_box p,
+		body.khmer .wd_testimonial_wrapper .wd_testimo_box h4 {
+			font-family: 'Battambang', sans-serif;
+			font-weight: 400; /* Adjust for readability; h4 can stay 700 if preferred */
+			line-height: 1.6; /* Improves Khmer script flow */
+		}
+
 		/* Ensure smalltext and other italic elements adapt well */
 		body.khmer .smalltext {
 			font-style: normal; /* Avoid italic issues with Khmer script */
@@ -232,6 +240,11 @@ Purchase:
 
 			body.khmer h2 {
 				font-size: 28px;
+			}
+
+			/* NEW: Mobile testimonial tweaks */
+			body.khmer .wd_testimo_box p {
+				font-size: 16px; /* Bump up for Khmer on small screens */
 			}
 		}
 	</style>
@@ -388,7 +401,7 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown" data-wow-delay="0.3s">
-							<h4 data-translate="storyNames">Jenny & Mark</h4>
+							<h4 data-translate="storyNames">Rithy Mith & Sangyu</h4>
 							<h1 data-translate="storyTitle">Our true love story</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
@@ -956,8 +969,8 @@ Purchase:
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="wd_heading wow fadeInDown">
-							<h4 data-translate="anyQuery">If Any Query</h4>
-							<h1 data-translate="contactUs">Contact Us</h1>
+							<h4 data-translate="anyQuery">Love Gift</h4>
+							<h1 data-translate="contactUs">Feel Love Gift</h1>
 							<img src="images/content/heading.png" alt="Heading" class="img-responsive">
 						</div>
 					</div>
@@ -1148,8 +1161,8 @@ Purchase:
 					othersText: "Thanks for groomsmen and bridesmaids for helping. Thanks Kim for Coding and Mosa for assisting. Thanks Uncle Junior and his wife helping on my wedding. Thanks Bong Vanna for translating. Thanks Every Nation Church for performance. May Jesus Bless you all.",
 
 					// Contact section
-					anyQuery: "If Any Query",
-					contactUs: "Contact Us",
+					anyQuery: "Love gift",
+					contactUs: "Feel Love With Us",
 					loveGift: "Love Gift",
 
 					// Testimonial section
@@ -1179,7 +1192,7 @@ Purchase:
 
 					// About section
 					gettingMarried: "កំពុងរៀបអាពាហ៍ពិពាហ៍!",
-					groomBride: "ខ្ញុំបាទ និង ខ្ញុំស្រី",
+					groomBride: "កូនកំលោះ និង កូនក្រមុំ",
 					groomName: "ប្ញទ្ធីមីត",
 					brideName: "សាងយូ",
 					invitation: "ការអញ្ជើញ",
@@ -1191,14 +1204,14 @@ Purchase:
 
 					// Story section
 					// storyNames: "រិទ្ធិ មិត្ត និង សង់យ៉ូ",
-					storyTitle: "រឿងស្នេហាពិតរបស់យើង",
+					storyTitle: "រឿងស្នេហាពិតយើង",
 					firstDate: "ជួបលើកដំបូង",
 					firstDateDesc: "អៀនតិច តែនរណាទៅដឹងថាការជួបលើកដំបូងក្នុងហាងកាហ្វេក្លាយទៅជាការចាប់ផ្តើមក្តីស្រឡាញ់របស់យើង។",
 					firstChristmas: "Christmas លើកដំបូង",
 					firstChristmasDesc: "អំណរនៅថ្ងៃ Christmas នឹង មិនដឹងថាអាចនាំយើងមកដល់ពេញមួយជីវិតនេះសោះ។",
 
 					// Events section
-					ceremonyParty: "ពិធី និងពិធីសំណោក",
+					ceremonyParty: "ពិធី និងពិធីជប់លៀង",
 					weddingEvent: "ពិធីរៀបការ",
 					mainCeremony: "កម្មវិធីផ្សំផ្គុំ",
 					weddingParty: "អាហារពេលល្ងាច",
@@ -1243,12 +1256,12 @@ Purchase:
 					},
 
 					// Gallery section
-					galleryNames: "រិទ្ធិ មិត្ត និង សង់យ៉ូ",
+					galleryNames: "ប្ញទ្ធីមីត និង សាងយូ",
 					memorableGallery: "វិចិត្រសាលរូបថតដែលគួរចងចាំ",
 
 					// Blog section
 					weddingJournal: "កំណត់ហេតុរៀបការ",
-					fromBlog: "ពីប្លក់របស់យើង",
+					fromBlog: "ពីប្លក់យើង",
 					parentsTitle: "ជូនចំពោះ <span>ឪពុកអ្នកម្តាយ</span> ទាំងសងខាង",
 					parentsText: "ជូនចំពោះលោកឪពុកអ្នកម្តាយរបស់កូន៖ កូនសូមអរគុណយ៉ាងជ្រាលជ្រៅចំពោះក្តីស្រឡាញ់ដែលមិនចេះរីងស្ងួតរបស់នាក់ទាំងពីរ ទាំងការលះបង់ និងការណែនាំ ដែលបានបង្រៀនឱ្យកូនដាក់ព្រះជាម្ចាស់ជាចម្បងនៅក្នុងជីវិត។<br><br>ក្តីស្រឡាញ់របស់ព្រះអង្គបានសូនរូបកូន ឱ្យក្លាយជាមនុស្សដូចពេលបច្ចុប្បន្ននេះ។",
 					companyTitle: "ដល់ <span>ក្រុមហ៊ុន</span>",
@@ -1264,7 +1277,7 @@ Purchase:
 
 					// Contact section
 					anyQuery: "បើមានសំណួរ",
-					contactUs: "ទំនាក់ទំនងពួកយើង",
+					contactUs: "អំណោយក្តីស្រឡាញ់",
 					loveGift: "អំណោយក្តីស្រឡាញ់",
 
 					// Testimonial section
@@ -1296,6 +1309,15 @@ Purchase:
 				} else {
 					$('body').removeClass('khmer');
 				}
+				// NEW: Force reflow and re-init testimonial carousel for font consistency
+				requestAnimationFrame(() => {
+					$('.wd_testimonial_slider .owl-carousel').trigger('destroy.owl.carousel').owlCarousel({
+						items: 1,
+						loop: true,
+						autoplay: true,
+						autoplayTimeout: 5000,
+					});
+				});
 				saveLanguagePreference();
 			}
 

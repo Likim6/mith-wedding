@@ -283,7 +283,7 @@ textarea:focus {
 }
 
 .wow {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 #snow {
