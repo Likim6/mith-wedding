@@ -1203,7 +1203,7 @@ Purchase:
 					untilMarried: "រហូតដល់ពេលយើងរៀបការ!",
 
 					// Story section
-					// storyNames: "រិទ្ធិ មិត្ត និង សង់យ៉ូ",
+					storyNames: "ប្ញទ្ធីមីត និង សាងយូ",
 					storyTitle: "រឿងស្នេហាពិតយើង",
 					firstDate: "ជួបលើកដំបូង",
 					firstDateDesc: "អៀនតិច តែនរណាទៅដឹងថាការជួបលើកដំបូងក្នុងហាងកាហ្វេក្លាយទៅជាការចាប់ផ្តើមក្តីស្រឡាញ់របស់យើង។",
@@ -1271,7 +1271,7 @@ Purchase:
 					panmingTitle: "ជូនចំពោះ <span>លោកគ្រូពេទ្យ ប៉ាន់ និងមីង</span>",
 					panmingText: "ខ្ញុំសូមអរគុណអ្នកទាំងពីរ ដែលជាអ្នកដែលព្រះអង្គបានប្រើ ដើម្បីជួយរូបខ្ញុំ កាលពីខ្ញុំនៅរៀនថ្នាក់អនុវិទ្យាល័យ។ អ្នកទាំងពីរបានបង្រៀនព្រះគម្ពីរនិង ធ្វើម្ហូប ឱ្យខ្ញុំញ៉ាំ និងបានជួយកសាងជំនឿរបស់ខ្ញុំនៅក្នុងព្រះគ្រីស្ទ",
 					darcyTitle: "ជូនចំពោះ <span>ប៉ា Darcy និង ម៉ាក់ Nene</span>",
-					darcyText: "ខ្ញុំ សូមអរគុណអ្នកទាំងពីរ ខ្លាំងណាស់ សម្រាប់ការមើលថែរូបខ្ញុំ ជាពិសេសចាប់តាំងពីថ្ងៃដែលព្រះយេស៊ូវបាននាំអ្នកទាំងពីរមកជួបខ្ញុំ នៅមជ្ឈមណ្ឌល The Life Center តាមរយៈលោកគ្រូ Ben។<br><br>អ្នកទាំងពីរបានជួយឱ្យកូន កាន់តែជិតស្និទ្ធជាមួយព្រះយេស៊ូវ តាមរយៈសេចក្តីស្រឡាញ់របស់អ្នកទាំងពីរ ផ្តល់អាហារញុំា ការផ្តល់ក្តីស្រឡាញ់ និងការផ្តល់ការអប់រំដ៏ល្អបំផុតដល់ខ្ញុំ។",
+					darcyText: "ខ្ញុំ សូមអរគុណអ្នកទាំងពីរ ខ្លាំងណាស់ សម្រាប់ការមើលថែរូបខ្ញុំ ជាពិសេសចាប់តាំងពីថ្ងៃដែលព្រះយេស៊ូវបាននាំអ្នកទាំងពីរ�មកជួបខ្ញុំ នៅមជ្ឈមណ្ឌល The Life Center តាមរយៈលោកគ្រូ Ben។<br><br>អ្នកទាំងពីរបានជួយឱ្យកូន កាន់តែជិតស្និទ្ធជាមួយព្រះយេស៊ូវ តាមរយៈសេចក្តីស្រឡាញ់របស់អ្នកទាំងពីរ ផ្តល់អាហារញុំា ការផ្តល់ក្តីស្រឡាញ់ និងការផ្តល់ការអប់រំដ៏ល្អបំផុតដល់ខ្ញុំ។",
 					othersTitle: "ថ្លែងអំណរគុណដល់<span>សមាជិកដទៃទៀត</span>",
 					othersText: "សូមអរគុណដល់មិត្តភក្តិកំដរខាងប្រុស និងខាងស្រី សម្រាប់ការជួយជ្រោមជ្រែង។ សូមអរគុណ Kim សម្រាប់ការជួយផ្នែកកូដ (Coding) និង Tithya ព្រមទាំង Mosa។ សូមអរគុណ លោកពូ Junior និងភរិយា ដែលបានជួយក្នុងពិធីការមង្គលការរបស់ខ្ញុំ។ សូមអរគុណដល់ ព្រះវិហារ Every Nation សម្រាប់ការសម្តែងក្នុងកម្មវិធី។",
 
@@ -1297,7 +1297,7 @@ Purchase:
 			function toggleLanguage() {
 				currentLanguage = currentLanguage === 'kh' ? 'en' : 'kh';
 				const lang = translations[currentLanguage];
-				const flagSrc = currentLanguage === 'kh' ? 'images/flags/us.png' : 'images/flags/kh.png';
+				const flagSrc = currentLanguage === 'kh' ? 'images/flags/kh.png' : 'images/flags/us.png';
 				const toggleText = currentLanguage === 'kh' ? 'English' : 'ភាសាខ្មែរ';
 				$('#languageFlag, #mobileLanguageFlag').attr('src', flagSrc);
 				$('#languageText, #mobileLanguageText').text(toggleText);
@@ -1472,10 +1472,10 @@ Purchase:
 
 			// Load saved language preference
 			function loadLanguagePreference() {
-				const savedLanguage = localStorage.getItem('weddingLanguage') || 'en';
+				const savedLanguage = localStorage.getItem('weddingLanguage') || 'kh';
 				currentLanguage = savedLanguage;
 				const lang = translations[currentLanguage];
-				const flagSrc = currentLanguage === 'kh' ? 'images/flags/us.png' : 'images/flags/kh.png';
+				const flagSrc = currentLanguage === 'kh' ? 'images/flags/kh.png' : 'images/flags/us.png';
 				const toggleText = currentLanguage === 'kh' ? 'English' : 'ភាសាខ្មែរ';
 				$('#languageFlag, #mobileLanguageFlag').attr('src', flagSrc);
 				$('#languageText, #mobileLanguageText').text(toggleText);
